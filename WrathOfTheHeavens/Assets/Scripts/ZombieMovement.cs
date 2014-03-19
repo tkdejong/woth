@@ -7,12 +7,12 @@ public class ZombieMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		rigidbody2D.velocity = new Vector2(speed, 0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (new Vector2(speed * Time.deltaTime, 0f));
+		//transform.Translate (new Vector2(speed * Time.deltaTime, 0f));
 		if (transform.position.x >= goalX) {
 			Debug.Log ("Zombie reached the town!");
 			Destroy(gameObject);

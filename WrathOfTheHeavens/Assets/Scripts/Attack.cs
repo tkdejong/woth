@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Attack : MonoBehaviour {
 	//The enemies that are currently colliding with the cursors collider
-	public List<Transform> underCursor;
+	List<Transform> underCursor;
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +22,12 @@ public class Attack : MonoBehaviour {
 	}
 
 	//Keep track of what enemies are currently under the cursor 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter2D(Collider2D other) {
 		if (other.GetComponent<Zombie> () != null) {
 			underCursor.Add (other.transform);
 		}
 	}
-	void OnTriggerExit(Collider other) {
+	void OnTriggerExit2D(Collider2D other) {
 		underCursor.Remove (other.transform);
 	}
 }
