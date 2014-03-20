@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MouseFollow : MonoBehaviour {
-	public float followSpeed;
+	//public float followSpeed;
 
 
 	// Use this for initialization
@@ -16,9 +16,9 @@ public class MouseFollow : MonoBehaviour {
 		Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		pos.z = 0f;
 		transform.position = pos;
-		//Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		//Vector3 transPos = transform.position;
-		//rigidbody2D.velocity = followSpeed * (new Vector2(mousePos.x, mousePos.y) - new Vector2(transPos.x, transPos.y));
+		/*Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		Vector3 transPos = transform.position;
+		rigidbody2D.velocity = followSpeed * (new Vector2(mousePos.x, mousePos.y) - new Vector2(transPos.x, transPos.y));*/
 
 	}
 }
