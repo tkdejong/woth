@@ -11,6 +11,15 @@ public class ZombieScheduler : MonoBehaviour {
 
 	public GameObject templateZombie;
 
+	//Game duration in seconds
+	public float gameDuration = 600f;
+	[HideInInspector]
+	public float timeLeft {
+		get {
+			return startTime + gameDuration - Time.time;
+		}
+	}
+
 	float startTime;
 	float lastSpawn;
 
@@ -37,4 +46,5 @@ public class ZombieScheduler : MonoBehaviour {
 		zombie.position = new Vector2 (spawnX, y);
 		zombie.GetComponent<ZombieMovement> ().speed = speed;
 	}
+
 }
