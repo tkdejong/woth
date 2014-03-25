@@ -10,8 +10,8 @@ public class GameState : MonoBehaviour {
 	public Transform town;
 
 	//Lightning cooldown in seconds
-	public static float maxCooldown = 2f; 
-	public float cooldown = maxCooldown;
+	public float maxCooldown = 2f; 
+	public float cooldown = 0;
 
 	//Game duration in seconds
 	public float gameDuration = 600f;

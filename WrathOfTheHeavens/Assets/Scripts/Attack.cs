@@ -19,7 +19,7 @@ public class Attack : MonoBehaviour {
 	void Update () {
 
 		//Check if attack can be executed
-		if(state.cooldown >= GameState.maxCooldown) {
+		if(Time.timeScale!=0 && state.cooldown >= state.maxCooldown) {
 
 			//Check if attack is executed
 			if (Input.GetMouseButtonDown(0)) {
