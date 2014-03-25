@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class Town : MonoBehaviour {
+	[HideInInspector]
 	public int hitpoints = 3;
+	public int maxHitpoints = 3;
 	Transform wall;
 
 	// Use this for initialization
 	void Start () {
+		hitpoints = maxHitpoints;
 		wall = transform.FindChild("TownWall");
 	}
 	

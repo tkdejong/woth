@@ -11,15 +11,6 @@ public class ZombieScheduler : MonoBehaviour {
 
 	public GameObject templateZombie;
 
-	//Game duration in seconds
-	public float gameDuration = 600f;
-	[HideInInspector]
-	public float timeLeft {
-		get {
-			return startTime + gameDuration - Time.time;
-		}
-	}
-
 	float startTime;
 	float lastSpawn;
 

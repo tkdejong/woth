@@ -16,6 +16,7 @@ public class Zombie : MonoBehaviour {
 	//Called when the zombie has been hit by the players attack
 	void Attacked () {
 		Debug.Log ("Zombie was killed!");
+		GameObject.FindGameObjectWithTag("Global").GetComponent<GameState>().zombieKills ++;
 		Destroy(gameObject);
 	}
 }

@@ -9,7 +9,7 @@ public class DrawBar : MonoBehaviour {
 	public float barTop = -0.103f;
 	public float barBottom = -0.71f;
 	//The color of the bar
-	public Color barColor = new Color(255f,0,0,1f);
+	public Color barColor = new Color(1,0,0,1f);
 
 	//The screen coordinates of the bar can be stored after they have been calculated
 	//If the position is static, the topleft and bottomright are calculated only once,
@@ -19,10 +19,10 @@ public class DrawBar : MonoBehaviour {
 	private Vector3 bottomRight;
 	
 	private GUIStyle barStyle = null;
-	private ZombieScheduler scheduler;
+	//private ZombieScheduler scheduler;
 
 	void Start() {
-		scheduler = GameObject.FindGameObjectWithTag ("Global").GetComponent<ZombieScheduler>();
+		//scheduler = GameObject.FindGameObjectWithTag ("Global").GetComponent<ZombieScheduler>();
 
 		if (staticPosition) {
 			CalculateCoordinates ();
@@ -65,8 +65,17 @@ public class DrawBar : MonoBehaviour {
 		}
 
 		//Draw the rectange for a certain percentage of the width (showing how full the bar is)
-		float width = Mathf.Max(0f, (scheduler.timeLeft / scheduler.gameDuration) * (bottomRight.x - topLeft.x));
-		GUI.Box (new Rect (topLeft.x, topLeft.y, width, bottomRight.y - topLeft.y), GUIContent.none, barStyle);
+		float width = GetBarPercentage() * (bottomRight.x - topLeft.x);
+		GUI.Box (new Rect (topLeft.x, topLeft.y, width, bottomRight.y - topLeft.y), GetBarContent (), barStyle);
 	}
+
+	//Subclasses can decide what the bar percentage and content is based on
+	protected virtual float GetBarPercentage() {
+		return 1f;
+	}
+	protected virtual GUIContent GetBarContent() {
+		return GUIContent.none;
+	}
+
 }
 //""
