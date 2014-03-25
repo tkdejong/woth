@@ -7,6 +7,10 @@ public class Town : MonoBehaviour {
 	public int maxHitpoints = 3;
 	Transform wall;
 
+	//Health levels where the wall sprite changes
+	public int[] wallChangingHealthLevels;
+	private int nextHealthLevel = 0;
+
 	// Use this for initialization
 	void Start () {
 		hitpoints = maxHitpoints;
@@ -25,7 +29,7 @@ public class Town : MonoBehaviour {
 			Debug.Log ("YOU LOSE - the town is destroyed");
 		}
 		//Show the visual effects of the town getting closer to destruction
-		else {
+		if (hitpoints <= wallChangingHealthLevels[nextHealthLevel]) {
 			//Message the wall to become more crubled
 			wall.SendMessage("NextSprite");
 		}
