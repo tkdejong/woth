@@ -10,11 +10,6 @@ public class DrawHealthBar : DrawBar {
 		Town town = townObject.GetComponent<Town>();
 		return town.hitpoints / town.maxHitpoints;
 	}
-	//Show the remaining health percentage
-	protected override GUIContent GetBarContent() {
-		Town town = townObject.GetComponent<Town>();
-		return new GUIContent(Mathf.RoundToInt(100 * town.hitpoints / town.maxHitpoints).ToString() + "%");
-	}
 
 }
 //""
