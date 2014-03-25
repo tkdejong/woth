@@ -68,6 +68,7 @@ public class DrawText : MonoBehaviour {
 		}
 
 		//Draw the text on the calculated position
+		GUI.depth = -1;
 		GUI.Label (new Rect(textPos.x, textPos.y, textScreenWidth, textScreenHeight), GetText (), style);
 	}
 	
