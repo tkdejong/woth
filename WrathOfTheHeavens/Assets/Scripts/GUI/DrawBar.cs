@@ -18,7 +18,7 @@ public class DrawBar : MonoBehaviour {
 	private Vector3 topLeft;
 	private Vector3 bottomRight;
 	
-	private GUIStyle barStyle = null;
+	private Texture2D barTexture = null;
 	//private ZombieScheduler scheduler;
 
 	void Start() {
@@ -29,16 +29,14 @@ public class DrawBar : MonoBehaviour {
 		}
 	}
 
-	//Sets the style of the bar
-	private void setStyle() {
-		if (barStyle == null) {
+	//Sets the texture of the bar
+	private void setTexture() {
+		if (barTexture == null) {
 			//Make a texture that is just one simple color (this is absurdly difficult and weird in Unity)
 			//This HAS to be called from within OnGUI
-			Texture2D texture = new Texture2D(1, 1);
-			texture.SetPixel(0,0, barColor);
-			texture.Apply();
-			barStyle = new GUIStyle( GUI.skin.box );			
-			barStyle.normal.background = texture;
+			barTexture = new Texture2D(1, 1);
+			barTexture.SetPixel(0,0, barColor);
+			barTexture.Apply();
 		}
 	}
 
@@ -59,22 +57,19 @@ public class DrawBar : MonoBehaviour {
 	//Draws the bar on screen, fitting it in the sprite and scaling it
 	//  according to the game time that is left.
 	void OnGUI() {
-		setStyle ();
+		setTexture ();
 		if (!staticPosition) {
 			CalculateCoordinates();
 		}
 
 		//Draw the rectange for a certain percentage of the width (showing how full the bar is)
 		float width = GetBarPercentage() * (bottomRight.x - topLeft.x);
-		GUI.Box (new Rect (topLeft.x, topLeft.y, width, bottomRight.y - topLeft.y), GetBarContent (), barStyle);
+		GUI.DrawTexture(new Rect (topLeft.x, topLeft.y, width, bottomRight.y - topLeft.y), barTexture);
 	}
 
 	//Subclasses can decide what the bar percentage and content is based on
 	protected virtual float GetBarPercentage() {
 		return 1f;
-	}
-	protected virtual GUIContent GetBarContent() {
-		return GUIContent.none;
 	}
 
 }
