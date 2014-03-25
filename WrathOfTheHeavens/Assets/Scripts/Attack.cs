@@ -7,20 +7,19 @@ public class Attack : MonoBehaviour {
 	//The lightning bolt that is spawned on attack
 	public GameObject lightningBolt;
 
-	private float cooldown;
-	private static float maxCooldown = 2;
+	private GameState state;
 
 	// Use this for initialization
 	void Start () {
 		underCursor = new List<Transform>();
-		cooldown = maxCooldown;
+		state = GameObject.FindGameObjectWithTag("Global").GetComponent<GameState>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		//Check if attack can be executed
-		if(cooldown >= maxCooldown) {
+		if(state.cooldown >= GameState.maxCooldown) {
 
 			//Check if attack is executed
 			if (Input.GetMouseButtonDown(0)) {
@@ -45,11 +44,8 @@ public class Attack : MonoBehaviour {
 					underCursor.Remove (killed);
 				}
 
-				cooldown = 0;
+				state.cooldown = 0;
 			}
-		}
-		else {
-			cooldown += Time.deltaTime;
 		}
 	}
 

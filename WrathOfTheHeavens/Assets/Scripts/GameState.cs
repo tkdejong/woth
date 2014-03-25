@@ -9,6 +9,10 @@ public class GameState : MonoBehaviour {
 	public int zombieKills = 0;
 	public Transform town;
 
+	//Lightning cooldown in seconds
+	public static float maxCooldown = 2f; 
+	public float cooldown = maxCooldown;
+
 	//Game duration in seconds
 	public float gameDuration = 600f;
 	[HideInInspector]
@@ -37,6 +41,8 @@ public class GameState : MonoBehaviour {
 		else if (town.GetComponent<Town>().hitpoints <= 0) {
 			EndGame("The town has been destroyed!\nYou survived for " + Mathf.RoundToInt(Time.time - startTime) + " seconds.");
 		}
+
+		IncreaseCooldown();
 	}
 
 	//End the game, pausing everything and displaying the given message on the screen
@@ -63,6 +69,12 @@ public class GameState : MonoBehaviour {
 			float h = 150;
 			GUI.Box(new Rect(Screen.width/2 - w/2, Screen.height/2 - h/2, w, h), gameFinishedMessage, style);
 		}
+	}
+
+	//Increases the cooldown by the seconds passed since last frame
+	private void IncreaseCooldown() {
+		cooldown += Time.deltaTime;
+		if(cooldown >= maxCooldown) cooldown = maxCooldown;
 	}
 
 }
