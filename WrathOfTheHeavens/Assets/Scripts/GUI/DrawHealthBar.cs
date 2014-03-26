@@ -8,7 +8,7 @@ public class DrawHealthBar : DrawBar {
 	//Use the percentage of wall health as the bar percentage
 	protected override float GetBarPercentage() {
 		Town town = townObject.GetComponent<Town>();
-		return town.hitpoints / town.maxHitpoints;
+		return (float)town.hitpoints / (float)town.maxHitpoints;
 	}
 
 }

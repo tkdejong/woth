@@ -8,6 +8,6 @@ public class DrawHealthText : DrawText {
 	//Draw the percentage of town health as text
 	protected override string GetText() {
 		Town town = townObject.GetComponent<Town>();
-		return Mathf.RoundToInt(100 * town.hitpoints / town.maxHitpoints).ToString() + "%";
+		return Mathf.RoundToInt(100 * (float)town.hitpoints / (float)town.maxHitpoints).ToString() + "%";
 	}
 }
