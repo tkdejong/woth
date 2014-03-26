@@ -18,9 +18,9 @@ public class ZombieScheduler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startTime = Time.time;
-		lastSpawn1 = startTime;
-		lastSpawn2 = startTime;
-		lastSpawn3 = startTime;
+		lastSpawn1 = 0;
+		lastSpawn2 = 0;
+		lastSpawn3 = 0;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class ZombieScheduler : MonoBehaviour {
 		//Zombie Type 1
 		if (Time.time - lastSpawn1 >= spawnInterval1.Evaluate (lastSpawn1)) {
 			lastSpawn1 = Time.time;
-			SpawnZombie(0.3f);
+			SpawnZombie(0.6f);
 		}
 		
 		//Zombie Type 2
