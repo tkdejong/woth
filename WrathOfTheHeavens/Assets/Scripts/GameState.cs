@@ -10,7 +10,7 @@ public class GameState : MonoBehaviour {
 	public Transform town;
 
 	//Lightning cooldown in seconds
-	public float maxCooldown = 0.2f; 
+	public float maxCooldown = 0.2f;
 	public float cooldown = 0;
 
 	//Game duration in seconds
@@ -28,7 +28,8 @@ public class GameState : MonoBehaviour {
 		}
 	}
 
-	public float startTime;
+	float startTime;
+	public float StartAtTime = 0f;
 
 	//If this string is set, the game is finished and the message should be displayed
 	private string gameFinishedMessage;
@@ -37,7 +38,7 @@ public class GameState : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		startTime = Time.time;
+		startTime = Time.time - StartAtTime;
 	}
 
 	void Update () {

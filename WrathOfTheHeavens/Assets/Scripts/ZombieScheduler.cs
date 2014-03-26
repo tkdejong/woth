@@ -14,13 +14,16 @@ public class ZombieScheduler : MonoBehaviour {
 	
 	float startTime;
 	float lastSpawn1, lastSpawn2, lastSpawn3;
+
+	private GameState state;
 	
 	// Use this for initialization
 	void Start () {
-		startTime = Time.time;
 		lastSpawn1 = 0;
 		lastSpawn2 = 0;
 		lastSpawn3 = 0;
+
+		state = GameObject.FindGameObjectWithTag("Global").GetComponent<GameState>();
 	}
 	
 	// Update is called once per frame
@@ -28,19 +31,19 @@ public class ZombieScheduler : MonoBehaviour {
 		//Debug.Log ("Speed = " + speed.Evaluate (Time.time - startTime) + " at time " + (Time.time - startTime));
 		
 		//Zombie Type 1
-		if (Time.time - lastSpawn1 >= spawnInterval1.Evaluate (lastSpawn1)) {
+		if (Time.time - lastSpawn1 >= spawnInterval1.Evaluate (state.timeSurvived)) {
 			lastSpawn1 = Time.time;
 			SpawnZombie(0.6f);
 		}
 		
 		//Zombie Type 2
-		if (Time.time - lastSpawn2 >= spawnInterval2.Evaluate (lastSpawn2)) {
+		if (Time.time - lastSpawn2 >= spawnInterval2.Evaluate (state.timeSurvived)) {
 			lastSpawn2 = Time.time;
 			SpawnZombie(2.0f);
 		}
 		
 		//Zombie Type 1
-		if (Time.time - lastSpawn3 >= spawnInterval3.Evaluate (lastSpawn3)) {
+		if (Time.time - lastSpawn3 >= spawnInterval3.Evaluate (state.timeSurvived)) {
 			lastSpawn3 = Time.time;
 			SpawnZombie(4.0f);
 		}
