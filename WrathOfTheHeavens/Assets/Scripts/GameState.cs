@@ -10,15 +10,21 @@ public class GameState : MonoBehaviour {
 	public Transform town;
 
 	//Lightning cooldown in seconds
-	public float maxCooldown = 2f; 
+	public float maxCooldown = 0.2f; 
 	public float cooldown = 0;
 
 	//Game duration in seconds
-	public float gameDuration = 600f;
+	public float gameDuration = 300f;
 	[HideInInspector]
 	public float timeLeft {
 		get {
 			return startTime + gameDuration - Time.time;
+		}
+	}
+	[HideInInspector]
+	public float timeSurvived {
+		get {
+			return Time.time - startTime;
 		}
 	}
 
