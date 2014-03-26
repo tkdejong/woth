@@ -116,6 +116,7 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = 0;
 		AudioListener.pause = true;
 		currentPage = Page.Main;
+		GameObject.FindGameObjectWithTag ("Crosshair").GetComponent<SpriteRenderer> ().enabled = false;
 	}
 	
 	void UnPauseGame() {
@@ -127,6 +128,7 @@ public class PauseMenu : MonoBehaviour
 		if (IsBeginning() && start != null) {
 			start.SetActive(true);
 		}
+		GameObject.FindGameObjectWithTag ("Crosshair").GetComponent<SpriteRenderer> ().enabled = true;
 	}
 	
 	bool IsGamePaused() {
