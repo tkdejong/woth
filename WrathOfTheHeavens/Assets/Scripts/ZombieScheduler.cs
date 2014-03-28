@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class ZombieScheduler : MonoBehaviour {
-	public AnimationCurve spawnInterval1 = AnimationCurve.Linear (0f, 7f, 600f, .5f);
-	public AnimationCurve spawnInterval2 = AnimationCurve.Linear (0f, 14f, 600f, 1.0f);
-	public AnimationCurve spawnInterval3 = AnimationCurve.Linear (0f, 21f, 600f, 1.5f);
+	public AnimationCurve spawnInterval1 = AnimationCurve.Linear (30f, 5f, 90f, 0.6f);
+	public AnimationCurve spawnInterval2 = AnimationCurve.Linear (60f, 5f, 150f, 0.6f);
+	public AnimationCurve spawnInterval3 = AnimationCurve.Linear (120f, 5f, 180f, 0.6f);
 	
 	public float minSpawnY = -3.3f;
 	public float maxSpawnY = 3.3f;
@@ -37,13 +37,13 @@ public class ZombieScheduler : MonoBehaviour {
 		}
 		
 		//Zombie Type 2
-		if (Time.time - lastSpawn2 >= spawnInterval2.Evaluate (state.timeSurvived)) {
+		if (Time.time > 60f && Time.time - lastSpawn2 >= spawnInterval2.Evaluate (lastSpawn2)) {
 			lastSpawn2 = Time.time;
 			SpawnZombie(2.0f);
 		}
 		
 		//Zombie Type 1
-		if (Time.time - lastSpawn3 >= spawnInterval3.Evaluate (state.timeSurvived)) {
+		if (Time.time > 120f && Time.time - lastSpawn3 >= spawnInterval3.Evaluate (lastSpawn3)) {
 			lastSpawn3 = Time.time;
 			SpawnZombie(4.0f);
 		}
