@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Zombie : MonoBehaviour {
 
+	public AudioClip deathSound;
+
 	// Use this for initialization
 	void Start () {
 
@@ -17,6 +19,8 @@ public class Zombie : MonoBehaviour {
 	void Attacked () {
 		Debug.Log ("Zombie was killed!");
 		GameObject.FindGameObjectWithTag("Global").GetComponent<GameState>().zombieKills ++;
+		gameObject.audio.Play ();		
+		AudioSource.PlayClipAtPoint (deathSound, Camera.main.transform.position, 0.8f);
 		Destroy(gameObject);
 	}
 }

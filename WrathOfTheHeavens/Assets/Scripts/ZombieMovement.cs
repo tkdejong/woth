@@ -19,6 +19,7 @@ public class ZombieMovement : MonoBehaviour {
 			Debug.Log ("Zombie reached the town!");
 			//Notify the town that it has been attacked
 			town.SendMessage("Attacked");
+			AudioSource.PlayClipAtPoint (gameObject.GetComponent<Zombie>().deathSound, Camera.main.transform.position, 0.8f);
 			Destroy(gameObject);
 		}
 	}
