@@ -13,6 +13,10 @@ public class GameState : MonoBehaviour {
 	public float maxCooldown = 0.2f;
 	public float cooldown = 0;
 
+	//Counters for number of attacks in total and number of hits
+	public int attacks = 0;
+	public int hits = 0;
+
 	//Game duration in seconds
 	public float gameDuration = 300f;
 	[HideInInspector]
@@ -55,7 +59,7 @@ public class GameState : MonoBehaviour {
 	//End the game, pausing everything and displaying the given message on the screen
 	void EndGame(string message) {
 		Time.timeScale = 0f;
-		gameFinishedMessage = message;
+		gameFinishedMessage = message + "\nAttacks: " + attacks + "\n Hits:" + hits;
 	}
 
 	//Sets the style of the game-over text
@@ -82,6 +86,14 @@ public class GameState : MonoBehaviour {
 	private void IncreaseCooldown() {
 		cooldown += Time.deltaTime;
 		if(cooldown >= maxCooldown) cooldown = maxCooldown;
+	}
+
+	public void IncreaseAttacksCounter() {
+		attacks++;
+	}
+
+	public void IncreaseHitsCounter() {
+		hits++;
 	}
 
 }

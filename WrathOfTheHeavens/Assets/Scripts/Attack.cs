@@ -22,7 +22,8 @@ public class Attack : MonoBehaviour {
 		if(Time.timeScale!=0 && state.cooldown >= state.maxCooldown) {
 
 			//Check if attack is executed
-			if (Input.GetMouseButtonDown(0)) {
+			if (Input.GetKeyDown(KeyCode.F)) {
+				state.IncreaseAttacksCounter();
 				//Display the effects of the attack on the targeted location
 				Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				pos.z = 0;
@@ -35,6 +36,7 @@ public class Attack : MonoBehaviour {
 
 				foreach (Transform zombie in underCursor)
 				{
+					state.IncreaseHitsCounter();
 					//Send the zombie a message that it has been hit
 					zombie.SendMessage("Attacked");
 					killedZombies.Add(zombie);
