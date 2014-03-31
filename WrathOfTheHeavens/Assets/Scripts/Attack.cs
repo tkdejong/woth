@@ -9,6 +9,11 @@ public class Attack : MonoBehaviour {
 
 	private GameState state;
 
+	public float left;
+	public float right;
+	public float top;
+	public float bottom;
+
 	// Use this for initialization
 	void Start () {
 		underCursor = new List<Transform>();
@@ -21,12 +26,18 @@ public class Attack : MonoBehaviour {
 		//Check if attack can be executed
 		if(Time.timeScale!=0 && state.cooldown >= state.maxCooldown) {
 
+			//Display the effects of the attack on the targeted location
+			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			pos.z = 0;
+
 			//Check if attack is executed
-			if (Input.GetKeyDown(KeyCode.F)) {
+			if (Input.GetKeyDown(KeyCode.F) && 
+			    pos.x >= left &&
+			    pos.x <= right &&
+			    pos.y <= top &&
+			    pos.y >= bottom) {
+
 				state.IncreaseAttacksCounter();
-				//Display the effects of the attack on the targeted location
-				Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				pos.z = 0;
 				Transform lightning = ((GameObject) Instantiate (lightningBolt)).transform;
 				lightning.position = pos;
 
