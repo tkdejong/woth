@@ -109,6 +109,9 @@ public class PauseMenu : MonoBehaviour
 		if (!IsBeginning() && GUILayout.Button ("Reset")) {
 			Application.LoadLevel(0);
 		}
+		if  (GUILayout.Button ("Exit")) {
+			Application.Quit();
+		}
 		EndPage();
 	}
 	
