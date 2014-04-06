@@ -14,11 +14,6 @@ public class DrawText : MonoBehaviour {
 	public int fontSize = 12;
 	public bool bold;
 	public Color textColor = new Color(0f, 0f, 0f, 1f);
-
-
-
-	//The color of the bar
-	//public Color barColor = new Color(1,0,0,1f);
 	
 	//The screen coordinates of the text can be stored after they have been calculated
 	//If the position is static, this is calculated only once, instead of every frame.

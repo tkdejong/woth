@@ -15,7 +15,8 @@ public class PauseMenu : MonoBehaviour
 	public GameObject start;
 	
 	public string[] instructions= {
-		"OMG ZOMBIES!! KILL 'EM ALL!!!"} ;
+		"Kill the zombies, before they reach the town!",
+		"Use the F key to fire a lightning bolt."} ;
 	public Texture[] instructionsIcons;
 	
 	public enum Page {
